@@ -1,0 +1,140 @@
+{% extends 'layout/base.html' %}
+
+{% block title %} Chi tiết sản phẩm {% endblock %}
+{% block css %}
+<link rel="stylesheet" href="{{url_for('static', filename='css/products_details.css')}}"/>
+{%endblock%}
+{% block content %}
+<img src="{{ url_for('static', filename='images/hero-bg.svg') }}" style="position: absolute; z-index:-1; top:-200px" alt="">
+<div id="container" style="margin-top:135px">
+
+<!-- Start	Product details -->
+	<div class="product-details">
+
+		<!-- 	Product Name -->
+	<h1>{{product.name}}</h1>
+<!-- 		<span class="hint new">New</span> -->
+<!-- 		<span class="hint free-shipping">Free Shipping</span> -->
+<!-- 		the Product rating -->
+	<div class="div">
+        <span class="hint-star star">
+		<i class="fa fa-star" aria-hidden="true"></i>
+		<i class="fa fa-star" aria-hidden="true"></i>
+		<i class="fa fa-star" aria-hidden="true"></i>
+			<i class="fa fa-star" aria-hidden="true"></i>
+            	<i class="fa fa-star" aria-hidden="true"></i>
+	</span>
+    </div>
+
+
+<!-- The most important information about the product -->
+		<p class="information" style="color:#4c4c4c; font-weight:1000px; ">" {{product.description}} "</p>
+<h3 style="color:#ff3f40; font-size: 50px; font-weight:700px;">{{ "{:,.0f}".format(product.price) }} VNĐ</h3>
+        <span>99 reviews</span>
+
+<!-- 		Control -->
+<div class="control">
+
+<!-- Start Button buying -->
+    <a href="/cart">
+        <button class="btn1">
+<!-- 		the Price -->
+	 <span class="price"><i class='bx bxs-hand-left bx-md' ></i></span>
+<!-- 		shopping cart icon-->
+            <a href="/cart">
+                 <span class="shopping-cart"><i class="fa fa-shopping-cart"  aria-hidden="true"></i></span>
+            </a>
+<!-- 		Buy Now / ADD to Cart-->
+            <span class="buy">Rent now</span>
+ </button>
+    </a>
+        <a onclick="addToCart({{product.id}}, '{{product.name}}', {{product.price}})">
+                            <button class="btn2">Add to Basket</button>
+                        </a>
+
+
+</div>
+
+</div>
+
+<!-- 	End	Product details   -->
+
+
+
+<!-- 	Start product image & Information -->
+
+<div class="product-image">
+
+	<img src="{{product.image}}" alt="Omar Dsoky">
+
+<!-- 	product Information-->
+<div class="info">
+	<h2>The Description</h2>
+	<ul>
+		<li><strong>Tên sách: </strong>{{product.name}}</li>
+		<li><strong>Số lượng:</strong>{{product.quantity}}</li>
+        <li><strong>Lượt mua hàng: </strong>231</li>
+		<li><strong>Lượt đánh giá 5 sao: </strong>83</li>
+
+
+		<li><strong>Chúc quý khách mua hàng vui vẻ! </strong></li>
+	</ul>
+</div>
+</div>
+<!--  End product image  -->
+
+
+</div>
+
+    <br>
+    <br>
+<div class="container2">
+
+    {%if current_user.is_authenticated %}
+    <div class="row">
+        <div class="form-group">
+            <textarea id="commentId" class="form-control" style="padding-top:10px; padding-left:-5; margin-bottom:10px" placeholder="Nhập nội dung để bình luận..."></textarea>
+            <input type="button" class="btn btn-warning" style="background:#0d6efd"  value="Bình luận" onclick="addComment({{product.id}})"/>
+        </div>
+    </div>
+    {%else%}
+    <a href="{{url_for('user_signin')}}"> Đăng nhập để bình luận</a>
+    {%endif%}
+    <br>
+    <br>
+    <div id="commentArea">
+        {%for c in comments%}
+        <div class="row comment">
+            <div class="col-md-1">
+                {% if c.user.avatar and c.user.avatar.startswith('https') %}
+                <img src="{{c.user.avatar}}" class="rounded-circle img-fluid" width="50px" height="50px"/>
+                {%else%}
+                <img src="{{url_for('static', filename='image/wibu.png')}}" class="rounded-circle img-fluid"
+                     width="50px" height="50px"/>
+                {%endif %}
+            </div>
+            <div class="col-md-11">
+                <p>{{c.content}}</p>
+                <p>
+                    <em class="myDate"> {{c.created_date}} </em>
+                </p>
+            </div>
+        </div>
+
+        {%endfor%}
+    </div>
+
+    <ul class="pagination">
+        {%if pages > 1%}
+        {% for i in range(1, pages + 1) %}
+        <li class="page-item"><a class="page-link" href="{{url_for('product_detail',product_id= product.id, page=i)}}">{{i}}</a>
+        </li>
+        {% endfor %}
+        {%endif%}
+    </ul>
+</div>
+</div>
+
+ <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+{% endblock %}
+

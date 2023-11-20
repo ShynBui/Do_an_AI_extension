@@ -1,0 +1,39 @@
+<!-- CSS -->
+
+    body {
+        background-color: #f2f2f2;
+    }
+
+    .card {
+        border-radius: 20px;
+        box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .profile-image-pic {
+        border: 5px solid #fff;
+    }
+
+    .form-control:focus {
+        border-color: #e68a00;
+        box-shadow: none;
+    }
+
+    .btn-color {
+        background-color: #e68a00;
+        border-color: #e68a00;
+    }
+
+    .btn-color:hover {
+        background-color: #d17100;
+        border-color: #d17100;
+    }
+
+a{
+  text-decoration: none;
+}
+::placeholder{
+    font-size:16px;
+}
+input{
+    padding:10px !important;
+}

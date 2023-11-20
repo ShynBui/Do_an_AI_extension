@@ -1,0 +1,135 @@
+
+.main_chat{
+        width: 60%;
+    height: 85%;
+    margin:0 auto;
+    box-shadow: 8px 5px 96px #8888
+}
+.header__chat{
+border: 1px solid #fff0f0;
+    margin-top:105px;
+    height:8%;
+    width: 100%;
+    background-color:#fff;
+    border-color: #cfcfcf;
+
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+}
+.mid__chat{
+
+
+overflow-y:scroll;
+ height: 87% !important;
+padding:10px;
+    border: 1px solid #fff0f0;
+ border-color: #cfcfcf;
+}
+
+html,body{
+    width:100%;
+    height:100%;
+}
+html{
+    overflow:hidden;
+}
+
+.chat{
+display:flex;
+}
+p:hover{
+    cursor:pointer;
+}
+message_input_form{
+    display:flex;
+}
+.other__text{
+padding: 10px;
+    background: #F7DB6A;
+    overflow: auto;
+    border-radius: 10px 15px;
+    }
+.my__text{
+    background-color: #1ab79d;;
+    color: white;
+    padding: 10px;
+    margin-left: 5px;
+     border-radius: 10px 15px;
+}
+#message_input_form{
+    width:100%;
+
+    display:flex;
+    align-items: center;
+ position:relative;
+    justify-content: center;
+}
+#message_input{
+    width:100%;
+
+    background-color: #f3f3f5;
+    padding: 12px 17px 14px 21px;
+    border: unset;
+
+
+}
+#message_input:valid{
+     border: none;
+  outline: none;
+}
+#submit{
+position: absolute;
+    right: 12px;
+ color:#0084ff;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    border: unset;
+    background-color: unset;
+}
+
+#submit:hover{
+    background-color: #f3f3f5;
+}
+#messages{
+   text-align: center;
+}
+.bot__chat{
+
+    height: 5%;
+   background-color:#ffffff;
+
+
+     border-right: 1px solid;
+    border-bottom: 1px solid;
+border-left: 1px solid;
+ border-color: #cfcfcf;
+
+    display:flex;
+    align-items:center;
+}
+@media screen and (max-width: 768px) and (min-width: 576px){
+    .icon{
+     display :none;
+    }
+}
+@media screen and (max-width: 575px) and (min-width: 463px){
+    .icon{
+        display:none;
+    }
+    .header__chat > h1{
+        font-size:15px !important;
+    }
+}
+@media screen and (max-width: 462px){
+    .icon{
+     display:none;
+    }
+     img{
+        display:none !important;
+     }
+    .header__chat > h1{
+        font-size:13px !important;
+    }
+}

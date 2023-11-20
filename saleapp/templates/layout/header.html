@@ -1,0 +1,124 @@
+{% block css %}
+<link href="{{ url_for('static', filename='css/style_chung.css') }}"
+      rel="stylesheet">
+{%endblock%}
+<header class="header" data-header>
+    <div class="container">
+
+        <a href="#" class="logo">
+            <img src="{{ url_for('static', filename='images/logo.svg') }}" width="162" height="50" alt="EduWeb logo">
+        </a>
+
+
+
+        <div class="header-actions">
+
+            {%if current_user.is_authenticated %}
+             <nav class="navbar" data-navbar>
+
+            <div class="wrapper">
+                <a href="#" class="logo">
+                    <img src="./static/images/logo.svg" width="162" height="50" alt="EduWeb logo">
+                </a>
+
+                <button class="nav-close-btn" aria-label="close menu" data-nav-toggler>
+                    <ion-icon name="close-outline" aria-hidden="true"></ion-icon>
+                </button>
+            </div>
+
+            <ul class="navbar-list">
+
+                <li class="navbar-item">
+                    <a href="{{url_for('home')}}" class="navbar-link" data-nav-link><i class='bx bxs-home'></i>Trang chủ</a>
+                </li>
+
+
+                <li class="navbar-item">
+                    <a href="{{url_for('calendar')}}" class="navbar-link" data-nav-link><i class='bx bxs-calendar' ></i>Thời gian biểu</a>
+                </li>
+
+                <li class="navbar-item">
+                    <a href="{{url_for('product_list')}}" class="navbar-link" data-nav-link><i class='bx bxs-coin-stack' ></i>Thư viện OU</a>
+                </li>
+
+                <li class="navbar-item">
+                    <a href="{{url_for('chat_room')}}" class="navbar-link" data-nav-link><i class='bx bx-support' ></i>Hỗ trợ</a>
+                </li>
+
+
+                <li class="navbar-item">
+                    <a href="{{url_for('chatbox')}}" class="navbar-link" data-nav-link><i class='bx bxs-contact' ></i>Chatbot học vụ</a>
+                </li>
+                <li class="nav-item header__icon"><i class='bx bx-cart-alt' name="cart"></i>
+                <a class="nav-link" href="{{url_for('cart')}}">
+                    Giỏ hàng <span style="background:hsl(160.14deg 65.02% 43.73%);border-radius:6px; padding:7px; margin-left:3px;" class="badge badge-info cartCounter"> {{cart_stats.total_quantity}} </span>
+                </a>
+            </li>
+
+            </ul>
+
+        </nav>
+            <ul class="navbar-item usermenu">
+                <a class="nav-link" href="{{url_for('profile_user')}}">
+                    {%if current_user.avatar %}
+                    <img class="rounded-circle" src="{{url_for('static', filename='images/phat.jpg')}}" width="50">
+
+                    {%else%}
+                    <img class="rounded-circle" src="{{url_for('static', filename='images/phat.jpg')}}" width="50">
+                    {%endif%}
+                    <!--                        {{current_user.username}}-->
+                </a>
+                <ul>
+                    <li class="box">
+
+                    </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="{{url_for('profile_user')}}">Profile</a>
+                    </li>
+
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{{url_for('question_answering')}}">Question Answering <span
+                                class="sr-only"></span></a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{{url_for('question')}}">Question<span class="sr-only"></span></a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{{url_for('predict')}}">Predict<span
+                                class="sr-only"></span></a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{{url_for('summary')}}">Summary<span
+                                class="sr-only"></span></a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{{url_for('stat')}}">Stat<span class="sr-only"></span></a>
+                    </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="{{url_for('user_signout')}}">Log out</a>
+                    </li>
+                </ul>
+
+
+            </ul>
+            {%endif%}
+
+            {%if not current_user.is_authenticated %}
+            <a href="{{url_for('user_signin')}}" class="btn has-before">
+                <span class="span">Đăng nhập</span>
+
+                <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
+            </a>
+            {%endif%}
+            <button class="header-action-btn" aria-label="open menu" data-nav-toggler>
+                <ion-icon name="menu-outline" aria-hidden="true"></ion-icon>
+            </button>
+
+        </div>
+
+        <div class="overlay" data-nav-toggler data-overlay></div>
+
+    </div>
+</header>
+
+

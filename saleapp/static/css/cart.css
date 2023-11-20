@@ -1,0 +1,26 @@
+th:hover{
+    cursor: default;
+}
+tr{
+
+}
+th{
+
+}
+h5:hover{
+     cursor: default;
+}
+.container{
+
+}
+.controlBtn{
+    display:flex;
+
+}
+.btn-success:hover{
+    color:black;
+}
+btn1{
+    padding:20px 25spx;
+    background: black;
+}

@@ -1,0 +1,69 @@
+{% extends 'layout/base.html' %}
+
+{% block title %} Trang chu {% endblock %}
+
+
+{% block content %}
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<style>
+  table {
+    font-family: Arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+     text-align: center;
+  margin: auto;
+  }
+
+  th {
+    background-color: #4CAF50;
+    color: white;
+    font-weight: bold;
+    text-align: left;
+    padding: 8px;
+  }
+
+  td {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+
+  tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+
+  td:hover {
+    background-color: #ddd;
+    cursor:pointer
+  }
+</style>
+
+<table class="container" style="width:50%; margin-bottom:10%;">
+  <tr>
+    <th style="display:flex;justify-content:center">Thống kê</th>
+  </tr>
+  <tr>
+
+    <td><a href="{{url_for('stat1')}}">Thống kê danh sách các môn học có điểm trung bình cao nhất trong từng khoa</a></td>
+  </tr>
+  <tr>
+
+    <td><a href="{{url_for('stat2')}}">Thống kê số lượng sinh viên của mỗi khoa</a></td>
+  </tr>
+  <tr>
+
+    <td><a href="{{url_for('stat3')}}">Liệt kê danh sách các sinh viên có điểm trung bình cao nhất</a></td>
+  </tr>
+</table>
+
+
+
+{% endblock %}
+
+
